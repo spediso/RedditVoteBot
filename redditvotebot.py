@@ -1,3 +1,5 @@
+#redditvotebot v1.0 by sped
+
 import praw
 
 x = 1 
