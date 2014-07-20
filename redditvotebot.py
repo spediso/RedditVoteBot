@@ -1,7 +1,7 @@
 import praw
 
 x = 1 
-r = praw.Reddit('redditvotebot by sped')
+r = praw.Reddit('redditvotebot v1.0 by sped')
 r.login()
 input = raw_input('Enter the username of the target: ')
 input2 = str(raw_input('Type upvote to mass upvote or type downvote to mass downvote. '))
