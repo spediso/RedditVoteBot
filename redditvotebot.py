@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #redditvotebot v1.2 by sped
 
 import praw
