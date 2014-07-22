@@ -1,12 +1,12 @@
-#redditvotebot v1.1 by sped
+#redditvotebot v1.2 by sped
 
 import praw
 
 x = 1 
-r = praw.Reddit('redditvotebot v1.1 by sped')
+r = praw.Reddit('redditvotebot v1.2 by sped')
 r.login()
 input = raw_input('Enter the username of the target: ')
-input2 = str(raw_input('Type upvote to mass upvote or type downvote to mass downvote. '))
+input2 = str(raw_input('Would you like to (U)pvote or (D)ownvote the target? (U|D). '))
 input3 = str(raw_input('Would you like the bot to run continuously? (Y|N) '))
 upvote = 'upvote' or 'Upvote'
 downvote = 'downvote' or 'Downvote'
