@@ -9,6 +9,8 @@ input = raw_input('Enter the username of the target: ')
 input2 = str(raw_input('Type upvote to mass upvote or type downvote to mass downvote. '))
 upvote = 'upvote' or 'Upvote'
 downvote = 'downvote' or 'Downvote'
+yes = 'y' or 'Y'
+no = 'n' or 'N'
 
 if input2 in downvote:
    print('Begining to downvote.  The permalink to the comment will be printed when a comment is downvoted.')
@@ -21,7 +23,10 @@ if input2 in downvote:
               comment.downvote()
               already_done.add(comment.id)
               print(comment.permalink)
-       x +=1 
+       if input3 in yes:
+           x +=1
+       if input3 in no:
+           exit()
 
 if input2 in upvote:
    print('Begining to upvote.  The permalink to the comment will be printed when a comment is upvoted.')
@@ -34,4 +39,7 @@ if input2 in upvote:
               comment.upvote()
               already_done.add(comment.id)
               print(comment.permalink)
-       x +=1  
+       if input3 in yes:
+           x +=1
+       if input3 in no:
+           exit()
