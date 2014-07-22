@@ -8,8 +8,8 @@ r.login()
 input = raw_input('Enter the username of the target: ')
 input2 = str(raw_input('Would you like to (U)pvote or (D)ownvote the target? (U|D). '))
 input3 = str(raw_input('Would you like the bot to run continuously? (Y|N) '))
-upvote = 'upvote' or 'Upvote'
-downvote = 'downvote' or 'Downvote'
+upvote = 'u' or 'U'
+downvote = 'd' or 'D'
 yes = 'y' or 'Y'
 no = 'n' or 'N'
 
