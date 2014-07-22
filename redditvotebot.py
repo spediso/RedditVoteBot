@@ -1,4 +1,4 @@
-#redditvotebot v1.0 by sped
+#redditvotebot v1.1 by sped
 
 import praw
 
