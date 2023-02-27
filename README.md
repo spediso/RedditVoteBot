@@ -32,7 +32,8 @@ Would you like to (U)pvote or (D)ownvote the target? (U|D). D
 Would you like the bot to run continuously? (Y|N) Y
 Beginning to downvote. The permalink to the comment will be printed when a comment is downvoted.
 https://www.reddit.com/r/some_subreddit/comments/some_post/some_comment
-https://www.reddit.com/r/some_subreddit/comments/some_post/another_comment```
+https://www.reddit.com/r/some_subreddit/comments/some_post/another_comment
+```
 
 
 ## Contributing
