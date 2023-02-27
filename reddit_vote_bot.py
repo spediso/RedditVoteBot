@@ -4,6 +4,9 @@
 import praw
 import os
 import threading
+from dotenv import load_dotenv
+
+load_dotenv()
 
 reddit = praw.Reddit(
     client_id=os.environ.get("PRAW_CLIENT_ID"),
