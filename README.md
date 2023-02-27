@@ -27,12 +27,12 @@ When you run the script, you will be prompted to enter the username of the targe
 
 ### Example usage:
 
-Enter the username of the target: some_user
+```Enter the username of the target: some_user
 Would you like to (U)pvote or (D)ownvote the target? (U|D). D
 Would you like the bot to run continuously? (Y|N) Y
 Beginning to downvote. The permalink to the comment will be printed when a comment is downvoted.
 https://www.reddit.com/r/some_subreddit/comments/some_post/some_comment
-https://www.reddit.com/r/some_subreddit/comments/some_post/another_comment
+https://www.reddit.com/r/some_subreddit/comments/some_post/another_comment```
 
 
 ## Contributing
