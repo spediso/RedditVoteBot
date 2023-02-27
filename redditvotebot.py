@@ -1,47 +1,55 @@
-#!/usr/bin/env python
-#redditvotebot v1.2 by sped
+#!/usr/bin/env python3
+#redditvotebot v2.0 by sped
 
 import praw
+import os
+import threading
 
-x = 1 
-r = praw.Reddit('redditvotebot v1.2 by sped')
-r.login()
-input = raw_input('Enter the username of the target: ')
-input2 = str(raw_input('Would you like to (U)pvote or (D)ownvote the target? (U|D). '))
-input3 = str(raw_input('Would you like the bot to run continuously? (Y|N) '))
-upvote = 'u' or 'U'
-downvote = 'd' or 'D'
-yes = 'y' or 'Y'
-no = 'n' or 'N'
+reddit = praw.Reddit(
+    client_id=os.environ.get("PRAW_CLIENT_ID"),
+    client_secret=os.environ.get("PRAW_CLIENT_SECRET"),
+    user_agent=os.environ.get("PRAW_USER_AGENT"),
+    username=os.environ.get("PRAW_USERNAME"),
+    password=os.environ.get("PRAW_PASSWORD")
+)
 
-if input2 in downvote:
-   print('Begining to downvote.  The permalink to the comment will be printed when a comment is downvoted.')
-   already_done = set()
+def vote_on_comments(user, vote_type, already_done):
+    for comment in user.comments.new(limit=None):
+        if comment.id not in already_done:
+            if vote_type == 'upvote':
+                comment.upvote()
+            elif vote_type == 'downvote':
+                comment.downvote()
+            already_done.add(comment.id)
+            print(comment.permalink)
 
-   user = r.get_redditor(input)
-   while True:
-       for comment in user.get_comments(limit=None):
-           if comment.id not in already_done:
-              comment.downvote()
-              already_done.add(comment.id)
-              print(comment.permalink)
-       if input3 in yes:
-           x +=1
-       if input3 in no:
-           exit()
+def run_bot():
+    username = input('Enter the username of the target: ')
+    vote_type = input('Would you like to (U)pvote or (D)ownvote the target? (U|D). ')
+    run_continuously = input('Would you like the bot to run continuously? (Y|N) ')
+    upvote = {'u', 'U'}
+    downvote = {'d', 'D'}
+    yes = {'y', 'Y'}
 
-if input2 in upvote:
-   print('Begining to upvote.  The permalink to the comment will be printed when a comment is upvoted.')
-   already_done = set()
+    already_done = set()
+    user = reddit.redditor(username)
+    while True:
+        if vote_type in downvote:
+            print('Beginning to downvote. The permalink to the comment will be printed when a comment is downvoted.')
+            t = threading.Thread(target=vote_on_comments, args=(user, 'downvote', already_done))
+            t.start()
+        elif vote_type in upvote:
+            print('Beginning to upvote. The permalink to the comment will be printed when a comment is upvoted.')
+            t = threading.Thread(target=vote_on_comments, args=(user, 'upvote', already_done))
+            t.start()
+        else:
+            print('Invalid vote type.')
+            break
 
-   user = r.get_redditor(input)
-   while True:
-       for comment in user.get_comments(limit=None):
-           if comment.id not in already_done:
-              comment.upvote()
-              already_done.add(comment.id)
-              print(comment.permalink)
-       if input3 in yes:
-           x +=1
-       if input3 in no:
-           exit()
+        if run_continuously in yes:
+            t.join()
+        else:
+            break
+
+if __name__ == '__main__':
+    run_bot()
