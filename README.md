@@ -13,7 +13,7 @@ RedditVoteBot is a Python script that can be used to automatically upvote or dow
 1. Clone this repository or download the script `reddit_vote_bot.py`.
 2. Install requirements: `pip install -r requirements.txt`.
 3. Register a Reddit application and obtain OAuth2 credentials by following the instructions [here](https://www.reddit.com/prefs/apps).
-4. Set the following environment variables with your Reddit OAuth2 credentials:
+4. Set the following environment variables in `.env` with your Reddit OAuth2 credentials:
    - `PRAW_CLIENT_ID`: your client ID
    - `PRAW_CLIENT_SECRET`: your client secret
    - `PRAW_USER_AGENT`: a descriptive user agent string
